@@ -1,8 +1,16 @@
 @import "bootstrap";
 
+/*h2 {
+  text-align: left;
+}
+
 h3 {
   color: #777;
 }
+
+p{
+  text-align: left;
+}*/
 
 /*Header*/
 
@@ -11,12 +19,20 @@ h3 {
   padding-left: 5%;
 }
 
-
 .container {
   padding: 0 5%;
 }
 
 .jumbotron {
-  background-color: #ddd;
   text-align: center;
+  h2{
+    text-align: left;
+  }
+  h3{
+    color: #777;
+  }
+  p{
+    text-align: left;
+  }
+  background-color: #ddd;
 }
