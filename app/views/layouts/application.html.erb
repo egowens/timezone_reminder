@@ -12,9 +12,13 @@
     <%= render 'layouts/header' %>
 
     <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <div class="row-responsive">
+        <div class="col-sm-10 col-sm-offset-1">
+          <% flash.each do |key, value| %>
+           <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <%= yield %>
