@@ -1,24 +1,32 @@
 @import "bootstrap";
 
-/*h2 {
-  text-align: left;
-}
+/* Header */
 
-h3 {
-  color: #777;
-}
-
-p{
-  text-align: left;
-}*/
-
-/*Header*/
-
-/*Footer*/
+/* Footer */
 .footer {
+  margin-top: 30px;
+  padding-top: 20px;
   padding-left: 5%;
+  border-top: 1px solid #ccc;
+  color: #777;
+  line-height: 7px;
 }
 
+/* Errors */
+#error_explaination {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_wth_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+/* Forms */
 .container {
   padding: 0 5%;
 }
@@ -35,4 +43,31 @@ p{
     text-align: left;
   }
   background-color: #ddd;
+}
+
+#reminder-well{
+  margin-top: 30px;
+}
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+.signup-form {
+  height: 35px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#signup-button {
+  margin-top: 20px;
 }

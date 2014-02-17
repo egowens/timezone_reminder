@@ -25,4 +25,12 @@ describe 'static pages' do
       expect(page).to have_content('About')
     end
   end
+
+  describe 'Signup page' do
+
+    it 'should have the h1 Sign up' do
+      visit signup_path
+      expect(page).to have_content('Sign Up')
+    end
+  end
 end
