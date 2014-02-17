@@ -28,7 +28,8 @@
 
 /* Forms */
 .container {
-  padding: 0 5%;
+  /*padding: 0 5%;*/
+  width: 100%
 }
 
 .jumbotron {
@@ -43,6 +44,11 @@
     text-align: left;
   }
   background-color: #ddd;
+}
+
+#user-grav{
+  text-align: center;
+  line-height: 50px;
 }
 
 #reminder-well{
