@@ -35,6 +35,12 @@ describe "Authentication" do
       it{ should have_link("Sign out",    href: signout_path) }
       it{ should_not have_link("Sign in", href: signin_path) }
 
+      describe "Visit the root path as a signed in user" do
+        before{ visit root_path }
+
+        it{ should have_content(user.name) }
+      end
+
       describe "Sign current user out" do
         before { click_link "Sign out" }
 

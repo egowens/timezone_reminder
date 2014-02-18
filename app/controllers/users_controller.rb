@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.welcome_email(@user).deliver
       flash[:success] = "Welcome to Timezone Reminder!"
       sign_in @user
       redirect_to @user

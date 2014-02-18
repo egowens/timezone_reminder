@@ -48,6 +48,10 @@ describe 'user_pages' do
     let(:user) { FactoryGirl.create(:user) }
     before do
       user.save
+      visit signin_path
+      fill_in "Email",    with: user.email
+      fill_in "Password", with: user.password
+      click_button "Sign in"
       visit user_path(user)
     end
 
