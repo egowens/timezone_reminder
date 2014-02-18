@@ -57,4 +57,39 @@ describe 'user_pages' do
 
     it{ should have_content(user.name) }
   end
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before{ visit edit_user_path(user) }
+
+    describe "page" do
+      it { should have_content("Update your profile") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+      it "should delete user" do
+        expect do
+          click_link "Remove account"
+        end.to change(User, :count).by(-1)
+      end
+
+    describe "with invalid information" do
+      before{ click_button "Save changes" }
+
+      it { should have_content("error") }
+    end
+
+    describe "with valid information" do
+      let(:new_name) { "New_name" }
+      before do
+        fill_in "Name",     with: new_name
+        fill_in "Email",    with: user.email
+        fill_in "Password", with: user.password
+        fill_in "Confirm",  with: user.password
+        click_button "Save changes"
+      end
+
+      specify { expect(user.reload.name). to eq new_name }
+    end
+  end
 end

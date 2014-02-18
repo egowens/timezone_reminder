@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     if signed_in?
       redirect_to current_user
     else
+      flash[:warning] = "Please sign in"
       redirect_to root_path
     end
   end
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
     if signed_in?
       @user = User.find_by_id(params[:id])
     else
+      flash[:warning] = "Please sign in"
       redirect_to root_path
     end
   end
@@ -30,6 +32,26 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Account deleted."
+    redirect_to root_url
   end
 
   private

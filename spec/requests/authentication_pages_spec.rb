@@ -38,7 +38,8 @@ describe "Authentication" do
       describe "Visit the root path as a signed in user" do
         before{ visit root_path }
 
-        it{ should have_content(user.name) }
+        it { should have_content(user.name) }
+        it { should have_link('Settings',   href: edit_user_path(user)) }
       end
 
       describe "Sign current user out" do

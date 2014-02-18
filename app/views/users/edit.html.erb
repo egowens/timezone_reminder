@@ -1,0 +1,29 @@
+<div class ="container-fluid">
+  <div class="row-fluid">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+      <h1>Update your profile</h1>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "signup-form" %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => "signup-form" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => "signup-form" %>
+
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, :class => "signup-form" %>
+
+        <%= f.submit "Save changes", class: "btn btn-lg btn-primary", id: "signup-button" %>
+      <% end %>
+
+      </br>
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails">change</a>
+      </br></br>
+      <%= link_to "Remove account", @user, method: :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-danger'%>
+    </div>
+  </div>
+</div>

@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="main-links">
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
-          <li><%= link_to "Settings", '#' %></li>
+          <li><%= link_to "Settings", edit_user_path(current_user) %></li>
           <li class="divider"></li>
           <li><%= link_to "Sign out", signout_path, method: "delete" %>
         <% else %>
