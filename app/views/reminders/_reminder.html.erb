@@ -1,0 +1,19 @@
+<li>
+<div class="container">
+  <div class="row-responsive">
+    <div class="col-sm-9">
+      <span class = "content"><%= reminder.content %></span></br>
+      <span class = "time">
+        <% if reminder.time > Time.now %>
+          <b>Set for <%= distance_of_time_in_words(Time.now, reminder.time) %> from now.</b>
+        <% else %>
+          <b>Was set for <%= distance_of_time_in_words(Time.now, reminder.time) %> ago.</b>
+        <% end %>
+      </span>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "Change", '#' %>  |  <%= link_to "Delete", '#' %>
+    </div>
+  </div>
+</div>
+</li>
