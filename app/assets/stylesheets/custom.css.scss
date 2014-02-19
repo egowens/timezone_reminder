@@ -77,3 +77,18 @@ input, textarea, select, .uneditable-input {
 #signup-button {
   margin-top: 20px;
 }
+
+/* Reminders */
+.reminders{
+  list-style: none;
+
+  li{
+    border-top: 1px solid #999;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .content{
+    line-height: 30px;
+  }
+}
