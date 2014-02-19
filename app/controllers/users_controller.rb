@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if signed_in?
       @user = User.find_by_id(params[:id])
+      @reminders = @user.reminders
     else
       flash[:warning] = "Please sign in"
       redirect_to root_path

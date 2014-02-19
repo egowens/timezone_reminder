@@ -8,7 +8,12 @@
     </aside>
       <div class="col-sm-8">
         <div class="well" id="reminder-well">
-          <p>This is a test well</p>
+          <h3>Reminders: <%= @user.reminders.count %></h3>
+          <% if @user.reminders.any? %>
+            <ol class="reminders">
+              <%= render @reminders %>
+            </ol>
+          <% end %>
         </div>
       </div>
     </div>

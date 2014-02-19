@@ -46,8 +46,12 @@ describe 'user_pages' do
 
   describe 'user show page' do
     let(:user) { FactoryGirl.create(:user) }
+    let(:r1){ FactoryGirl.create(:reminder, user: user, content: "reminder1", time: Time.now+10.hours) }
+    let(:r2){ FactoryGirl.create(:reminder, user: user, content: "reminder2", time: Time.now+10.minutes) }
     before do
       user.save
+      r1.save
+      r2.save
       visit signin_path
       fill_in "Email",    with: user.email
       fill_in "Password", with: user.password
@@ -56,6 +60,15 @@ describe 'user_pages' do
     end
 
     it{ should have_content(user.name) }
+
+    describe "reminders" do
+
+      before{ visit user_path(user) }
+
+      it { should have_content(r1.content) }
+      it { should have_content(r2.content) }
+      it { should have_content(user.reminders.count) }
+    end
   end
 
   describe "edit" do
@@ -91,5 +104,6 @@ describe 'user_pages' do
 
       specify { expect(user.reload.name). to eq new_name }
     end
+
   end
 end

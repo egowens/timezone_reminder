@@ -14,6 +14,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:reminders) }
 
   it { should be_valid }
 
@@ -35,5 +36,29 @@ describe User do
   describe "remember token" do
     before{ @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "reminder associations" do
+
+    before { @user.save }
+    let!(:later_reminder) do
+      FactoryGirl.create(:reminder, content: "later", user: @user, time: Time.now+10.days)
+    end
+    let!(:sooner_reminder) do
+      FactoryGirl.create(:reminder, content: "sooner", user: @user, time: Time.now+10.hours)
+    end
+
+    it "should have the right reminders in the right order" do
+      expect(@user.reminders.to_a).to eq [sooner_reminder, later_reminder]
+    end
+
+    it "should destroy associated reminders" do
+      reminders = @user.reminders.to_a
+      @user.destroy
+      expect(reminders).not_to be_empty
+      reminders.each do |reminder|
+        expect(Reminder.where(id: reminder.id)).to be_empty
+      end
+    end
   end
 end
