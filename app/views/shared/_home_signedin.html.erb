@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row-responsive">
+    <aside class="col-sm-3">
+      <%= render 'shared/user_info' %>
+      <div class="well">
+        <%= render 'shared/create_reminder' %>
+      </div>
+    </aside>
+    <div class="col-sm-9">
+      <div class="well" id="reminder-well">
+        <%= render 'shared/show_reminders' %>
+      </div>
+    </div>
+  </div>
+</div>

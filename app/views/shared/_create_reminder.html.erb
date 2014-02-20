@@ -1,0 +1,24 @@
+<div class="form-group">
+
+  <%= form_for(@reminder) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "New reminder..." %>
+  </div>
+
+  <div class='input-group date' id='datetimepicker1'>
+    <%= f.datetime_field :time, :class => "form-control" %>
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+  </div></br>
+
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+
+    });
+  });
+</script>

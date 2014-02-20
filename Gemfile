@@ -6,6 +6,8 @@ gem 'rails', '4.0.2'
 gem 'pg', '0.15.1'
 gem 'bootstrap-sass', '3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
