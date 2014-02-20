@@ -1,31 +1,20 @@
 class UsersController < ApplicationController
-
-  def index
-    if signed_in?
-      redirect_to current_user
-    else
-      flash[:warning] = "Please sign in"
-      redirect_to root_path
-    end
-  end
+  before_action :signed_in_user,  only: [:edit, :update, :destroy]
+  before_action :correct_user,    only: [:edit, :update]
+  before_action :not_signed_in,   only: [:new, :create]
 
   def new
     @user = User.new
   end
 
   def show
-    if signed_in?
-      @user = User.find_by_id(params[:id])
-      @reminders = @user.reminders
-    else
-      flash[:warning] = "Please sign in"
-      redirect_to root_path
-    end
+    redirect_to root_url
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
       UserMailer.welcome_email(@user).deliver
       flash[:success] = "Welcome to Timezone Reminder!"
       sign_in @user
@@ -36,11 +25,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -61,4 +48,16 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
+    #Before Filters
+
+    def correct_user
+      @user = User.find_by(id: params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def not_signed_in
+      unless !signed_in?
+        redirect_to root_url
+      end
+    end
 end

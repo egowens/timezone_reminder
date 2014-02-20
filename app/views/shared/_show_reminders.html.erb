@@ -1,0 +1,8 @@
+<h3>Reminders: <%= current_user.reminders.count %></h3>
+<% if @reminder_items.any? %>
+  <ol class="reminders">
+    <%= render partial: "reminders/reminder", collection: @reminder_items %>
+  </ol>
+<% else %>
+  <h3>No reminders yet!</h3>
+<% end %>

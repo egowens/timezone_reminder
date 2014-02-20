@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
     if signed_in?
-      redirect_to user_path(current_user)
+      @reminder = current_user.reminders.build
+      @reminder_items = current_user.reminder_feed
     end
   end
 
