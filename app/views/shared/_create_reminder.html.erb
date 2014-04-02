@@ -3,14 +3,13 @@
   <%= form_for(@reminder) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "New reminder..." %>
+    <%= f.text_area :content, :rows=>"4", placeholder: "New reminder..." %>
   </div>
 
   <div class='input-group date' id='datetimepicker1'>
-    <%= f.datetime_field :time, :class => "form-control" %>
+    <%= f.datetime_field :time, :class => "form-control", :placeholder => "Set date and time" %>
     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
   </div></br>
-
   <%= f.submit "Create", class: "btn btn-large btn-primary" %>
   <% end %>
 </div>

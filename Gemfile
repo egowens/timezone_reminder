@@ -8,6 +8,8 @@ gem 'bootstrap-sass', '3.1.1'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
+gem 'sunspot_rails'
+gem 'gmaps4rails', '2.0.3'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -15,6 +17,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'sunspot_solr'
 end
 
 group :test do

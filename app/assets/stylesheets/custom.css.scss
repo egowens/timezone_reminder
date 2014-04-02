@@ -23,8 +23,8 @@
 }
 
 .field_wth_errors {
-  @extend .control-group;
-  @extend .error;
+  @extend .control-group !optional;
+  @extend .error !optional;
 }
 
 /* Forms */
@@ -64,6 +64,7 @@
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
+  border-radius: 4px;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -79,6 +80,7 @@ input, textarea, select, .uneditable-input {
   margin-top: 20px;
 }
 
+
 /* Reminders */
 .reminders{
   list-style: none;
@@ -93,6 +95,12 @@ input, textarea, select, .uneditable-input {
     line-height: 30px;
   }
 }
+
+/* New Reminders */
+textarea{
+  resize: none;
+}
+
 #datetimpepicker1{
   .btn{
     padding: 6px 10px;
