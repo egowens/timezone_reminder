@@ -10,6 +10,7 @@ gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 gem 'sunspot_rails'
 gem 'gmaps4rails', '2.0.3'
+gem 'daemons-rails', :git => 'git@github.com:mirasrael/daemons-rails.git'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
